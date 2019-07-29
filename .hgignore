@@ -1,7 +1,4 @@
 syntax: glob
-*.pyc
-dist/
-build/
-*.egg-info/
 .vscode/
+build/
 export/
