@@ -5,6 +5,7 @@ EXPORT_DIR = export
 
 
 # Please don't touch the following settings
+PDF_FILENAME := $(LATEX_MAINFILE:.tex=.pdf)
 MAKEFILE_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 FILES_DIR := $(shell realpath --relative-to $(MAKEFILE_DIR) $(CURDIR)/$(BUILD_DIR))
 
@@ -25,3 +26,17 @@ export: build
 	latex2plos --build-dir $(BUILD_DIR) --export-dir $(EXPORT_DIR) --quiet $(LATEX_MAINFILE)
 	make -C $(EXPORT_DIR) -f ../Makefile build
 	@echo "Export finished, files have been saved to the '$(EXPORT_DIR)' directory"
+
+
+.PHONY: view-built
+view-built: build
+	xdg-open $(BUILD_DIR)/$(PDF_FILENAME)
+
+
+.PHONY: view-exported
+view-exported: export
+	xdg-open $(EXPORT_DIR)/$(BUILD_DIR)/$(PDF_FILENAME)
+
+
+.PHONY: view-all
+view-all: view-exported view-built
