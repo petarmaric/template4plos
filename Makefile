@@ -25,27 +25,31 @@ build: .FORCE_MAKE ## Build the paper
 
 
 .PHONY: export
-export: build ## Prepare the paper for journal submission
-	rm -rf $(EXPORT_DIR)
+export: clean-exported build ## Prepare the paper for journal submission
 	latex2plos --build-dir $(BUILD_DIR) --export-dir $(EXPORT_DIR) --quiet $(LATEX_MAINFILE)
 	make -C $(EXPORT_DIR) -f ../Makefile build
 	@echo "Export finished, files have been saved to the '$(EXPORT_DIR)' directory"
 
 
+.PHONY: clean-built
+clean-built: ## Remove the papers build directory
+	rm -rf $(BUILD_DIR)
+
+.PHONY: clean-exported
+clean-exported: ## Remove the papers export directory
+	rm -rf $(EXPORT_DIR)
+
 .PHONY: clean
-clean: ## Remove the papers build and export directories
-	rm -rf $(BUILD_DIR) $(EXPORT_DIR)
+clean: clean-built clean-exported ## Remove both the build and export directories
 
 
 .PHONY: view-built
 view-built: build ## View the papers built PDF file (runs 'build' if needed)
 	xdg-open $(BUILD_DIR)/$(PDF_FILENAME)
 
-
 .PHONY: view-exported
 view-exported: export ## View the papers exported PDF file (runs 'export' if needed)
 	xdg-open $(EXPORT_DIR)/$(BUILD_DIR)/$(PDF_FILENAME)
 
-
-.PHONY: view-all
-view-all: view-exported view-built ## View both the built and exported PDF files
+.PHONY: view
+view: view-exported view-built ## View both the built and exported PDF files
