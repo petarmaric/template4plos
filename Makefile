@@ -24,16 +24,17 @@ build: .FORCE_MAKE ## Build the paper
 	@echo "Build finished, files have been saved to the '$(FILES_DIR)' directory"
 
 
-.PHONY: clean
-clean: ## Remove the papers build and export directories
-	rm -rf $(BUILD_DIR) $(EXPORT_DIR)
-
 .PHONY: export
 export: build ## Prepare the paper for journal submission
 	rm -rf $(EXPORT_DIR)
 	latex2plos --build-dir $(BUILD_DIR) --export-dir $(EXPORT_DIR) --quiet $(LATEX_MAINFILE)
 	make -C $(EXPORT_DIR) -f ../Makefile build
 	@echo "Export finished, files have been saved to the '$(EXPORT_DIR)' directory"
+
+
+.PHONY: clean
+clean: ## Remove the papers build and export directories
+	rm -rf $(BUILD_DIR) $(EXPORT_DIR)
 
 
 .PHONY: view-built
