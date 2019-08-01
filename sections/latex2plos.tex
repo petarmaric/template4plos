@@ -55,3 +55,9 @@ It will also transform all figures into the TIFF image format (LZW compression, 
     \caption{\code{fsm\_damage\_analysis} project example experiment report (PDF image format) \cite{Project:fsm_damage_analysis:CodeRepository}}
     \label{fig:barbero-viscoelastic-damage-analysis}
 \end{figure}
+
+\subsection*{Multiple \LaTeX~files workflow}
+
+\code{latex2plos.transformers.IncludeTransformer} will embed the contents of files referenced by \verb|\include| into the exported paper directly, whereas \code{latex2plos.transformers.InputTransformer} will do the same for \verb|\input|, as demonstrated by this example paper (\code{paper.tex}) and its referenced \code{.tex} files (\code{preamble.tex},  \code{head/*.tex} and \code{sections/*.tex}).
+
+This is done as PLOS does not allow submission of multiple \code{.tex} files, and instead requires them to be combined into a single, cohesive \code{.tex} file \cite{PLOS:LaTeX}.
