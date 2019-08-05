@@ -66,6 +66,36 @@ Quick start:
 
 #. submit files from the ``export`` directory to the journal
 
+Using Docker
+------------
+
+If you do not wish to install a LaTeX distribution on your system you can use
+the dockerized version of template4plos instead:
+
+- show help::
+
+    $ ./dockerized.sh help
+    Usage: make [TARGET]...
+
+    Targets:
+      help              Display this help message
+      build             Build the paper
+      export            Prepare the paper for journal submission
+      clean-built       Remove the papers build directory
+      clean-exported    Remove the papers export directory
+      clean             Remove both the build and export directories
+      view-built        View the papers built PDF file (runs 'build' if needed)
+      view-exported     View the papers exported PDF file (runs 'export' if needed)
+      view              View both the built and exported PDF files
+
+- build your paper::
+
+    $ ./dockerized.sh build
+
+- prepare your paper for journal submission::
+
+    $ ./dockerized.sh export
+
 Contribute
 ==========
 
