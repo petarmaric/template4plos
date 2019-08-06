@@ -1,0 +1,23 @@
+template4plos 3.5.2 (August 6, 2019)
+====================================
+
+Bugfixes
+--------
+
+    * Updated dockerized.sh to explicitly state which Docker image tag is used
+      (don't implicitly rely on "latest").
+
+    * Tried to provoke a Docker Hub 'tag' automated build.
+
+template4plos 3.5.1 (August 5, 2019)
+====================================
+
+Bugfixes
+--------
+
+    * Tried to provoke a Docker Hub 'tag' automated build.
+
+template4plos 3.5.0 (August 5, 2019)
+====================================
+
+    * Initial release.
