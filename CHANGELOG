@@ -1,3 +1,13 @@
+template4plos 3.5.3 (September 3, 2019)
+=======================================
+
+Bugfixes
+--------
+
+    * Migrated from Bitbucket (Mercurial) to GitHub (Git).
+
+    * Updated Pipfile.lock to refresh project dependencies.
+
 template4plos 3.5.2 (August 6, 2019)
 ====================================
 
